@@ -1,436 +1,439 @@
 <!DOCTYPE html>
 <html lang="pl">
-  <head>
-    <meta charset="UTF-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+<head>
+    <meta charset="UTF-8"/>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
     <title>SODAstream</title>
     <style>
-      #es-rc-content.es-rc,#es-rc-content.es-rc h2,#es-rc-content.es-rc h3,#es-rc-content.es-rc h4,#es-rc-content.es-rc h5{font-family:HurmeGeometric3-Regular,sans-serif;color:#d9d8d6}@font-face{font-family:HurmeGeometric3-Black;src:url("./static/fonts/HurmeGeometricSans3-Black.woff") format("woff");font-weight:600;font-style:normal}@font-face{font-family:HurmeGeometric3-Bold;src:url("./static/fonts/HurmeGeometricSans3-Bold.woff") format("woff");font-weight:600;font-style:normal}@font-face{font-family:HurmeGeometric3-Regular;src:url("./static/fonts/HurmeGeometricSans3-Regular.woff") format("woff");font-weight:400;font-style:normal}@font-face{font-family:HurmeGeometric3-Light;src:url("./static/fonts/HurmeGeometricSans3-Light.woff2") format("woff2");font-weight:300;font-style:normal}#es-rc-content.es-rc{font-size:16px;line-height:1.2;max-width:1110px;margin:0 auto;padding:0;overflow:hidden}#es-rc-content.es-rc body,#es-rc-content.es-rc html{margin:0;padding:0}#es-rc-content.es-rc *{box-sizing:border-box}#es-rc-content.es-rc .es-eco__container,#es-rc-content.es-rc .es-kv{background-color:#13294b}#es-rc-content.es-rc .es-kv__container{padding:16px;background-color:#13294b}#es-rc-content.es-rc .es-kv__logo{padding:32px 0}#es-rc-content.es-rc .es-coctails__image,#es-rc-content.es-rc .es-cross__img,#es-rc-content.es-rc .es-eco__img,#es-rc-content.es-rc .es-kv__img,#es-rc-content.es-rc .es-taste__day-night{max-width:100%;display:block;margin:0 auto}#es-rc-content.es-rc .es-kv__img--logo{max-width:300px}#es-rc-content.es-rc .es-kv__img--mobile{max-width:250px;padding-left:60px}#es-rc-content.es-rc .es-kv__img--desktop{display:none}#es-rc-content.es-rc .es-kv__title{margin:0 0 30px;padding:0;line-height:inherit;color:#8e7845;font-family:HurmeGeometric3-Bold,sans-serif;font-weight:700;font-size:30px;text-align:center}#es-rc-content.es-rc .es-kv__subtitle{margin:0;padding:16px 0;line-height:inherit;color:#d9d8d6;font-family:HurmeGeometric3-Light,sans-serif;font-weight:300;font-size:30px;text-align:center}#es-rc-content.es-rc .es-kv__footer,#es-rc-content.es-rc .es-kv__text{color:#d9d8d6;font-family:inherit;font-weight:inherit;font-size:16px;text-align:center;margin:0;line-height:inherit}#es-rc-content.es-rc .es-kv__text{padding:0 5px 5px}#es-rc-content.es-rc .es-kv__footer{padding:0 16px 32px}#es-rc-content.es-rc .es-kv__footer-container{background-color:#8e7845}#es-rc-content.es-rc .es-kv__packshot{margin:24px 0}#es-rc-content.es-rc .es-eco__container--second{padding-top:30px}#es-rc-content.es-rc .es-eco__title{margin:0;padding:30px 0;line-height:inherit;color:#8e7845;background:#d9d8d6;font-family:HurmeGeometric3-Bold,sans-serif;font-weight:700;font-size:30px;text-align:center;letter-spacing:-1px}#es-rc-content.es-rc .es-eco__single-text,#es-rc-content.es-rc .es-eco__text{margin:0;font-family:HurmeGeometric3-Regular,sans-serif;font-size:16px;line-height:inherit;text-align:center;color:#d9d8d6}#es-rc-content.es-rc .es-eco__title--blue{background:#13294b;padding-bottom:10px}#es-rc-content.es-rc .es-eco__text{padding:55px 5px}#es-rc-content.es-rc .es-eco__single-text{padding:30px 5px}#es-rc-content.es-rc .es-eco__text--span{font-family:HurmeGeometric3-Bold,sans-serif;font-size:22px}#es-rc-content.es-rc .es-eco__content,#es-rc-content.es-rc .es-natural__content{display:flex;align-items:center;justify-content:center;flex-flow:column}#es-rc-content.es-rc .es-eco__single{display:flex;flex-direction:column;align-items:center;width:300px;margin-bottom:8px;padding-inline:8px}#es-rc-content.es-rc .es-eco__number{margin:0 0 30px;padding:0;line-height:inherit;color:#d9d8d6;font-family:HurmeGeometric3-Bold,sans-serif;font-weight:700;font-size:20px;text-align:center}#es-rc-content.es-rc .es-eco__subtitle{margin:0 0 40px;padding:0;line-height:inherit;color:#d9d8d6;font-family:HurmeGeometric3-Black,sans-serif;font-weight:900;font-size:30px;text-align:center;letter-spacing:-1px}#es-rc-content.es-rc .es-eco__description{padding-left:10px;padding-right:10px;padding-bottom:30px;color:#d9d8d6}#es-rc-content.es-rc .es-eco__footer{margin:0;padding:0 0 128px;line-height:inherit;color:#d9d8d6;font-family:"Hurme Geometric 3-Regular";font-size:12px;text-align:center}#es-rc-content.es-rc .es-natural__single{width:300px;margin-bottom:8px;padding-inline:8px}#es-rc-content.es-rc .es-natural__number{margin:0;padding:0;line-height:inherit;color:#d9d8d6;font-family:HurmeGeometric3-Black,sans-serif;font-size:20px;text-align:center}#es-rc-content.es-rc .es-natural__container{padding:32px 16px 10px;background-color:#eeeae5}#es-rc-content.es-rc .es-natural__subtitle,#es-rc-content.es-rc .es-natural__title{padding:0;text-align:center;letter-spacing:-1px;font-family:HurmeGeometric3-Bold,sans-serif;line-height:inherit}#es-rc-content.es-rc .es-natural__title{margin:0 0 16px;color:#13294b;font-size:42px;text-transform:uppercase}#es-rc-content.es-rc .es-natural__subtitle{margin:0 0 20px;color:#8e7845;font-weight:700;font-size:30px}#es-rc-content.es-rc .es-natural__subtitle--bold{display:block;font-family:HurmeGeometric3-Bold,sans-serif;font-weight:700}#es-rc-content.es-rc .es-natural__description{font-family:HurmeGeometric3-Regular,sans-serif;color:#13294b}#es-rc-content.es-rc .es-natural__list{padding-top:30px;padding-bottom:30px;background-color:#8e7845;font-family:HurmeGeometric3-Regular,sans-serif}#es-rc-content.es-rc .es-natural__item>b{font-family:HurmeGeometric3-Bold,sans-serif}#es-rc-content.es-rc .es-natural__img{max-width:100%;display:block;margin:0 auto;padding:16px}#es-rc-content.es-rc .es-natural__text{margin:16px 0;padding:0;line-height:inherit;color:#d9d8d6;font-family:"Hurme Geometric 3-Regular";font-size:16px;text-align:center}#es-rc-content.es-rc .es-taste__subtitle,#es-rc-content.es-rc .es-taste__title{font-family:HurmeGeometric3-Bold,sans-serif;letter-spacing:-1px;color:#d9d8d6;line-height:inherit;text-align:center}#es-rc-content.es-rc .es-eco{background:#13294b}#es-rc-content.es-rc .es-taste__container{padding-bottom:64px;background-color:#13294b}#es-rc-content.es-rc .es-taste__title{margin:0 0 16px;padding:0;font-size:42px;text-transform:uppercase}#es-rc-content.es-rc .es-taste__subtitle{margin:0;padding:48px 16px;font-size:25px}#es-rc-content.es-rc .es-taste__sub-subtitle{margin:0;padding:0 16px;font-size:28px;text-align:center}#es-rc-content.es-rc .es-taste__img{max-width:90%;display:block;margin:0 auto}#es-rc-content.es-rc .es-taste__text{margin:0;padding-top:48px;padding-bottom:46px;line-height:inherit;color:#d9d8d6;font-family:HurmeGeometric3-Regular,sans-serif;font-size:16px;text-align:center;margin-inline:16px}#es-rc-content.es-rc .es-art__container{background-color:#8e7845;padding:48px 0}#es-rc-content.es-rc .es-art__subtitle{width:62%;margin:0 auto 30px;padding:0;line-height:inherit;color:#13294b;font-family:HurmeGeometric3-Black,sans-serif;font-weight:900;font-size:30px;text-align:center}#es-rc-content.es-rc .es-art__text{margin:0;padding:0 10px;line-height:inherit;color:#d9d8d6;font-family:HurmeGeometric3-Regular,sans-serif;font-size:16px;text-align:center}#es-rc-content.es-rc .es-art__steps{display:flex;flex-direction:column;align-items:center;gap:45px;padding-bottom:30px;background-color:#8e7845}#es-rc-content.es-rc .es-art__steps--desktop,#es-rc-content.es-rc .es-art__steps-item-line{display:none}#es-rc-content.es-rc .es-art__steps-item{position:relative}#es-rc-content.es-rc .es-art__steps-item-title{position:absolute;top:10%;left:30%;font-family:HurmeGeometric3-Bold,sans-serif;font-weight:700;font-size:40px;color:#fff}#es-rc-content.es-rc .es-art__steps-item-title--2{top:25%;left:35%}#es-rc-content.es-rc .es-art__steps-item-title--3{top:35%;left:40%}#es-rc-content.es-rc .es-art__steps-item-description{font-family:HurmeGeometric3-Regular,sans-serif;font-size:inherit;text-align:center;max-width:70%;margin:0 auto}#es-rc-content.es-rc .es-art__steps-item-image{display:block;margin:0 auto 30px;max-width:350px}#es-rc-content.es-rc .es-art__steps-item-image--1,#es-rc-content.es-rc .es-art__steps-item-image--3{max-width:300px}#es-rc-content.es-rc .es-coctails{padding-top:30px;padding-bottom:45px;background-color:#f0ebe7}#es-rc-content.es-rc .es-coctails__left-logo{display:block;margin:0 auto;max-width:50%}#es-rc-content.es-rc .es-coctails__right-title{font-family:HurmeGeometric3-Bold,sans-serif;font-weight:700;font-size:28px;color:#000;text-align:center}#es-rc-content.es-rc .es-coctails__description{padding-left:10px;padding-right:10px;margin-bottom:30px;font-family:HurmeGeometric3-Regular,sans-serif;color:#000}#es-rc-content.es-rc .es-coctails__description span{font-weight:700}#es-rc-content.es-rc .es-coctails__tastes{display:flex;flex-direction:column;align-items:center;gap:30px;padding-top:30px}#es-rc-content.es-rc .es-coctails__tastes-single{max-width:300px}#es-rc-content.es-rc .es-coctails__tastes-single-full-width{margin-top:60px;max-width:100%}#es-rc-content.es-rc .es-coctails__tastes-title{margin-bottom:0;font-family:HurmeGeometric3-Bold,sans-serif;color:#8e7845;text-align:center}#es-rc-content.es-rc .es-coctails__tastes-single-title{margin-bottom:0;font-family:HurmeGeometric3-Bold,sans-serif;font-weight:700;color:#000;text-align:center}#es-rc-content.es-rc .es-coctails__tastes-single-description{font-family:HurmeGeometric3-Regular,sans-serif;color:#000;text-align:center;max-width:200px;margin:0 auto}#es-rc-content.es-rc .es-cross__container{background-color:#13294b;padding:16px}#es-rc-content.es-rc .es-cross__text,#es-rc-content.es-rc .es-cross__title{padding:0;line-height:inherit;color:#d9d8d6;font-family:HurmeGeometric3-Bold,sans-serif;text-align:center}#es-rc-content.es-rc .es-cross__title{margin:0 0 16px;font-size:28px}#es-rc-content.es-rc .es-cross__img--logo{width:200px}#es-rc-content.es-rc .es-cross__text{margin:0 0 22px;font-size:42px}@media screen and (min-width:768px){#es-rc-content.es-rc .es-eco__title,#es-rc-content.es-rc .es-kv__subtitle,#es-rc-content.es-rc .es-kv__title{font-size:40px}#es-rc-content.es-rc .es-kv__footer{max-width:68%;margin:0 auto}#es-rc-content.es-rc .es-natural{background:url(./static/img/es-natural-bg.png) center center/cover no-repeat}#es-rc-content.es-rc .es-natural__container{padding-bottom:75px;background-color:unset}#es-rc-content.es-rc .es-natural__description{max-width:50%;font-size:21px}#es-rc-content.es-rc .es-natural__list{margin-bottom:100px;background-color:unset;margin-top:116px;max-width:39%;font-size:21px}}@media screen and (min-width:800px){#es-rc-content.es-rc .es-kv__container{background:url(./static/img/kv-bg.png) center center/cover no-repeat}#es-rc-content.es-rc .es-kv__footer-container{background:url(./static/img/kv-footer-bg.png) center center/cover no-repeat;min-height:400px;padding-top:100px}#es-rc-content.es-rc .es-eco{position:relative}#es-rc-content.es-rc .es-eco__title{position:absolute;top:-20px;left:0;padding:40px;max-width:55%;text-align:left;font-size:50px;z-index:1}#es-rc-content.es-rc .es-eco__title--blue{position:static;max-width:100%;text-align:center}#es-rc-content.es-rc .es-eco__subtitle{position:relative;padding-left:50px;font-size:40px;max-width:42%;text-align:left;z-index:1}#es-rc-content.es-rc .es-eco__container{padding-left:50px;padding-bottom:50px}#es-rc-content.es-rc .es-eco__container--second{position:relative}#es-rc-content.es-rc .es-eco__img--eco{position:absolute;top:-60px;right:0;max-width:65%}#es-rc-content.es-rc .es-eco__description{position:relative;max-width:60%;padding-top:30px;padding-bottom:50px;margin-left:-50px;padding-left:100px;margin-bottom:0;background-color:#13294b;z-index:3}#es-rc-content.es-rc .es-eco__picture-container{position:relative;margin-right:0}#es-rc-content.es-rc .es-eco__text{position:absolute;bottom:0;left:5%;text-align:left;max-width:75%;font-size:21px}#es-rc-content.es-rc .es-eco__text--second{padding-top:0;position:static;text-align:center;max-width:62%;margin:0 auto}#es-rc-content.es-rc .es-eco__img--big{margin-right:0}#es-rc-content.es-rc .es-eco__single-text{font-size:20px;min-height:224px}#es-rc-content.es-rc .es-eco__number{min-height:80px}#es-rc-content.es-rc .es-eco__content{flex-direction:row}#es-rc-content.es-rc .es-natural__subtitle{max-width:70%;text-align:left;font-size:50px}#es-rc-content.es-rc .es-art{background:url(./static/img/art-bg.png) center center/cover no-repeat;position:relative;z-index:2}#es-rc-content.es-rc .es-art__container{background-color:unset;margin-top:-110px;padding-top:120px}#es-rc-content.es-rc .es-art__steps{flex-direction:row;justify-content:space-around;background-color:unset}#es-rc-content.es-rc .es-art__steps--mobile,#es-rc-content.es-rc .es-kv__img--mobile{display:none}#es-rc-content.es-rc .es-art__steps--desktop{display:block;position:relative}#es-rc-content.es-rc .es-art__steps-item{max-width:33%}#es-rc-content.es-rc .es-art__steps-text-container{display:flex;align-items:center}#es-rc-content.es-rc .es-art__steps-item-image{max-width:200px;max-height:170px}#es-rc-content.es-rc .es-art__steps-item-image--2{margin-bottom:50px;max-width:250px}#es-rc-content.es-rc .es-art__steps-item-image--desktop{max-width:100%;display:block;margin:0 auto 30px;max-height:none}#es-rc-content.es-rc .es-art__steps-item-line{display:block;position:absolute;top:0;left:0}#es-rc-content.es-rc .es-art__steps-item-line--1{top:67%;left:25%}#es-rc-content.es-rc .es-art__steps-item-line--2{top:83%;left:55%}#es-rc-content.es-rc .es-art__steps-item-title{font-size:30px}#es-rc-content.es-rc .es-art__steps-item-description--desktop{max-width:28%;text-align:left;font-size:24px}#es-rc-content.es-rc .es-art__steps-item-description--desktop-2{margin-top:-200px}#es-rc-content.es-rc .es-art__steps-item-description--desktop-1{margin-top:-50px}#es-rc-content.es-rc .es-art__text{max-width:80%;margin:0 auto}#es-rc-content.es-rc .es-coctails__container{display:flex;gap:10px;justify-content:space-between}#es-rc-content.es-rc .es-coctails__right-title{margin-right:15%;font-size:35px}#es-rc-content.es-rc .es-coctails__description{margin-top:-100px;margin-left:50px;max-width:54%}#es-rc-content.es-rc .es-coctails__tastes{flex-direction:row;justify-content:center;align-items:flex-start;padding-top:10px}#es-rc-content.es-rc .es-taste__subtitle{font-size:40px}#es-rc-content.es-rc .es-taste__text{max-width:85%;margin:0 auto}#es-rc-content.es-rc .es-kv__img--desktop{display:block;position:absolute;top:30px;right:-30px;width:350px}#es-rc-content.es-rc .es-kv__container{position:relative;min-height:650px}#es-rc-content.es-rc .es-kv__content{max-width:647px;margin-left:16px}#es-rc-content.es-rc .es-kv__title{text-align:left;margin-top:100px}#es-rc-content.es-rc .es-kv__subtitle{font-size:50px;letter-spacing:-2px}#es-rc-content.es-rc .es-kv__text{padding:40px 0 0;text-align:left;font-size:20px;max-width:73%}#es-rc-content.es-rc .es-kv__footer{max-width:65%;font-size:21px}#es-rc-content.es-rc .es-kv__img--logo{margin-left:0}#es-rc-content.es-rc .es-kv__logo{padding:0}#es-rc-content.es-rc .es-natural__single{padding-inline:16px;max-width:220px}#es-rc-content.es-rc .es-natural__content{align-items:flex-start;flex-flow:row;gap:32px}}@media screen and (min-width:998px){#es-rc-content.es-rc .es-kv__content{padding-top:62px;padding-left:77px}#es-rc-content.es-rc .es-kv__text{max-width:100%;padding:24px 0 0;text-align:left;font-size:24px}#es-rc-content.es-rc .es-kv__title{margin-top:169px;font-size:72px}#es-rc-content.es-rc .es-kv__container{min-height:798px}#es-rc-content.es-rc .es-kv__img--desktop{top:78px;right:-110px;width:450px}#es-rc-content.es-rc .es-kv__subtitle{margin-bottom:15px;font-size:54px}#es-rc-content.es-rc .es-kv__footer{max-width:91%;font-size:24px}#es-rc-content.es-rc .es-eco__text{max-width:72%;font-size:24px;left:10%;bottom:4%}#es-rc-content.es-rc .es-eco__text--second{max-width:55%}#es-rc-content.es-rc .es-eco__title{padding-left:100px;font-size:60px;padding-top:88px;padding-bottom:72px;top:-58px}#es-rc-content.es-rc .es-eco__title--blue{margin-bottom:65px;font-size:60px;padding:0}#es-rc-content.es-rc .es-coctails__tastes-single-title,#es-rc-content.es-rc .es-eco__number,#es-rc-content.es-rc .es-eco__single-text{font-size:24px}#es-rc-content.es-rc .es-eco__content{align-items:flex-start;justify-content:space-around}#es-rc-content.es-rc .es-natural{min-height:1100px}#es-rc-content.es-rc .es-natural__container{padding-left:120px}#es-rc-content.es-rc .es-natural__description{max-width:55%;font-size:24px}#es-rc-content.es-rc .es-natural__description--second{max-width:60%}#es-rc-content.es-rc .es-natural__subtitle{margin-bottom:40px;font-size:60px}#es-rc-content.es-rc .es-natural__list{list-style-type:none;margin-top:100px;padding-left:0;max-width:43%;font-size:23px}#es-rc-content.es-rc .es-eco__subtitle{padding-top:43px;padding-left:85px;font-size:60px}#es-rc-content.es-rc .es-eco__description{max-width:55%;font-size:24px;padding-left:110px;padding-top:50px}#es-rc-content.es-rc .es-eco__img--eco{top:-55px;right:0;max-width:75%}#es-rc-content.es-rc .es-art__subtitle,#es-rc-content.es-rc .es-taste__subtitle{font-size:60px}#es-rc-content.es-rc .es-art__text{max-width:82%;font-size:24px}#es-rc-content.es-rc .es-art__steps-item{width:33%}#es-rc-content.es-rc .es-art__steps-item-image{max-width:100%;max-height:none;margin-bottom:30px}#es-rc-content.es-rc .es-coctails__description{font-size:24px;margin-top:-150px;margin-left:74px;max-width:50%}#es-rc-content.es-rc .es-coctails__right-title{font-size:58px}#es-rc-content.es-rc .es-coctails__tastes-title{font-size:36px}#es-rc-content.es-rc .es-coctails__tastes-single-description{max-width:77%;font-size:24px}#es-rc-content.es-rc .es-coctails__tastes-single{max-width:380px}#es-rc-content.es-rc .es-taste__text{max-width:85%;font-size:24px}}@media screen and (min-width:1110px){#es-rc-content.es-rc .es-kv__img--desktop{right:0}}@keyframes es-pulse{0%{transform:scale(1);box-shadow:0 0 0 0 #13294b;border-radius:50%}66%{transform:scale(1.1);box-shadow:0 0 0 15px rgba(208,230,185,0);border-radius:50%}to{transform:scale(1);box-shadow:0 0 0 rgba(208,230,185,0);border-radius:50%}}
+        #es-rc-content.es-rc,#es-rc-content.es-rc h2,#es-rc-content.es-rc h3,#es-rc-content.es-rc h4,#es-rc-content.es-rc h5{font-family:HurmeGeometric3-Regular,sans-serif;color:#d9d8d6}@font-face{font-family:HurmeGeometric3-Black;src:url("./static/fonts/HurmeGeometricSans3-Black.woff") format("woff");font-weight:600;font-style:normal}@font-face{font-family:HurmeGeometric3-Bold;src:url("./static/fonts/HurmeGeometricSans3-Bold.woff") format("woff");font-weight:600;font-style:normal}@font-face{font-family:HurmeGeometric3-Regular;src:url("./static/fonts/HurmeGeometricSans3-Regular.woff") format("woff");font-weight:400;font-style:normal}@font-face{font-family:HurmeGeometric3-Light;src:url("./static/fonts/HurmeGeometricSans3-Light.woff2") format("woff2");font-weight:300;font-style:normal}#es-rc-content.es-rc{font-size:16px;line-height:1.2;max-width:1110px;margin:0 auto;padding:0;overflow:hidden}#es-rc-content.es-rc body,#es-rc-content.es-rc html{margin:0;padding:0}#es-rc-content.es-rc *{box-sizing:border-box}#es-rc-content.es-rc .es-eco__container,#es-rc-content.es-rc .es-kv{background-color:#13294b}#es-rc-content.es-rc .es-kv__container{padding:16px;background-color:#13294b}#es-rc-content.es-rc .es-kv__logo{padding:32px 0}#es-rc-content.es-rc .es-coctails__image,#es-rc-content.es-rc .es-cross__img,#es-rc-content.es-rc .es-eco__img,#es-rc-content.es-rc .es-kv__img,#es-rc-content.es-rc .es-taste__day-night{max-width:100%;display:block;margin:0 auto}#es-rc-content.es-rc .es-kv__img--logo{max-width:300px}#es-rc-content.es-rc .es-kv__img--mobile{max-width:250px;padding-left:60px}#es-rc-content.es-rc .es-kv__img--desktop{display:none}#es-rc-content.es-rc .es-kv__title{margin:0 0 30px;padding:0;line-height:inherit;color:#8e7845;font-family:HurmeGeometric3-Bold,sans-serif;font-weight:700;font-size:30px;text-align:center}#es-rc-content.es-rc .es-kv__subtitle{margin:0;padding:16px 0;line-height:inherit;color:#d9d8d6;font-family:HurmeGeometric3-Light,sans-serif;font-weight:300;font-size:30px;text-align:center}#es-rc-content.es-rc .es-kv__footer,#es-rc-content.es-rc .es-kv__text{color:#d9d8d6;font-family:inherit;font-weight:inherit;font-size:16px;text-align:center;margin:0;line-height:inherit}#es-rc-content.es-rc .es-kv__text{padding:0 5px 5px}#es-rc-content.es-rc .es-kv__footer{padding:0 16px 32px}#es-rc-content.es-rc .es-kv__footer-container{background-color:#8e7845}#es-rc-content.es-rc .es-kv__packshot{margin:24px 0}#es-rc-content.es-rc .es-eco__container--second{padding-top:30px}#es-rc-content.es-rc .es-eco__title{margin:0;padding:30px 0;line-height:inherit;color:#8e7845;background:#d9d8d6;font-family:HurmeGeometric3-Bold,sans-serif;font-weight:700;font-size:30px;text-align:center;letter-spacing:-1px}#es-rc-content.es-rc .es-eco__single-text,#es-rc-content.es-rc .es-eco__text{margin:0;font-family:HurmeGeometric3-Regular,sans-serif;font-size:16px;line-height:inherit;text-align:center;color:#d9d8d6}#es-rc-content.es-rc .es-eco__title--blue{background:#13294b;padding-bottom:10px}#es-rc-content.es-rc .es-eco__text{padding:55px 5px}#es-rc-content.es-rc .es-eco__single-text{padding:30px 5px}#es-rc-content.es-rc .es-eco__text--span{font-family:HurmeGeometric3-Bold,sans-serif;font-size:22px}#es-rc-content.es-rc .es-eco__content,#es-rc-content.es-rc .es-natural__content{display:flex;align-items:center;justify-content:center;flex-flow:column}#es-rc-content.es-rc .es-eco__single{display:flex;flex-direction:column;align-items:center;width:300px;margin-bottom:8px;padding-inline:8px}#es-rc-content.es-rc .es-eco__number{margin:0 0 30px;padding:0;line-height:inherit;color:#d9d8d6;font-family:HurmeGeometric3-Bold,sans-serif;font-weight:700;font-size:20px;text-align:center}#es-rc-content.es-rc .es-eco__subtitle{margin:0 0 40px;padding:0;line-height:inherit;color:#d9d8d6;font-family:HurmeGeometric3-Black,sans-serif;font-weight:900;font-size:30px;text-align:center;letter-spacing:-1px}#es-rc-content.es-rc .es-eco__description{padding-left:10px;padding-right:10px;padding-bottom:30px;color:#d9d8d6}#es-rc-content.es-rc .es-eco__footer{margin:0;padding:0 0 128px;line-height:inherit;color:#d9d8d6;font-family:"Hurme Geometric 3-Regular";font-size:12px;text-align:center}#es-rc-content.es-rc .es-natural__single{width:300px;margin-bottom:8px;padding-inline:8px}#es-rc-content.es-rc .es-natural__number{margin:0;padding:0;line-height:inherit;color:#d9d8d6;font-family:HurmeGeometric3-Black,sans-serif;font-size:20px;text-align:center}#es-rc-content.es-rc .es-natural__container{padding:32px 16px 10px;background-color:#eeeae5}#es-rc-content.es-rc .es-natural__subtitle,#es-rc-content.es-rc .es-natural__title{padding:0;text-align:center;letter-spacing:-1px;font-family:HurmeGeometric3-Bold,sans-serif;line-height:inherit}#es-rc-content.es-rc .es-natural__title{margin:0 0 16px;color:#13294b;font-size:42px;text-transform:uppercase}#es-rc-content.es-rc .es-natural__subtitle{margin:0 0 20px;color:#8e7845;font-weight:700;font-size:30px}#es-rc-content.es-rc .es-natural__subtitle--bold{display:block;font-family:HurmeGeometric3-Bold,sans-serif;font-weight:700}#es-rc-content.es-rc .es-natural__description{font-family:HurmeGeometric3-Regular,sans-serif;color:#13294b}#es-rc-content.es-rc .es-natural__list{list-style-type:none;margin:0;background-color:#8e7845;font-family:HurmeGeometric3-Regular,sans-serif}#es-rc-content.es-rc .es-natural__item>b{font-family:HurmeGeometric3-Bold,sans-serif}#es-rc-content.es-rc .es-natural__img{max-width:100%;display:block;margin:0 auto;padding:16px}#es-rc-content.es-rc .es-natural__text{margin:16px 0;padding:0;line-height:inherit;color:#d9d8d6;font-family:"Hurme Geometric 3-Regular";font-size:16px;text-align:center}#es-rc-content.es-rc .es-taste__subtitle,#es-rc-content.es-rc .es-taste__title{font-family:HurmeGeometric3-Bold,sans-serif;letter-spacing:-1px;color:#d9d8d6;line-height:inherit;text-align:center}#es-rc-content.es-rc .es-eco{background:#13294b}#es-rc-content.es-rc .es-taste__container{padding-bottom:64px;background-color:#13294b}#es-rc-content.es-rc .es-taste__title{margin:0 0 16px;padding:0;font-size:42px;text-transform:uppercase}#es-rc-content.es-rc .es-taste__subtitle{margin:0;padding:48px 16px;font-size:25px}#es-rc-content.es-rc .es-taste__sub-subtitle{margin:0;padding:0 16px;font-size:28px;text-align:center}#es-rc-content.es-rc .es-taste__img{max-width:90%;display:block;margin:0 auto}#es-rc-content.es-rc .es-taste__text{margin:0;padding-top:48px;padding-bottom:46px;line-height:inherit;color:#d9d8d6;font-family:HurmeGeometric3-Regular,sans-serif;font-size:16px;text-align:center;margin-inline:16px}#es-rc-content.es-rc .es-art__container{background-color:#8e7845;padding:48px 0}#es-rc-content.es-rc .es-art__subtitle{width:62%;margin:0 auto 30px;padding:0;line-height:inherit;color:#13294b;font-family:HurmeGeometric3-Black,sans-serif;font-weight:900;font-size:30px;text-align:center}#es-rc-content.es-rc .es-art__text{margin:0;padding:0 10px;line-height:inherit;color:#d9d8d6;font-family:HurmeGeometric3-Regular,sans-serif;font-size:16px;text-align:center}#es-rc-content.es-rc .es-art__steps{display:flex;flex-direction:column;align-items:center;gap:45px;padding-bottom:30px;background-color:#8e7845}#es-rc-content.es-rc .es-art__steps--desktop,#es-rc-content.es-rc .es-art__steps-item-line{display:none}#es-rc-content.es-rc .es-art__steps-item{position:relative}#es-rc-content.es-rc .es-art__steps-item-title{position:absolute;top:10%;left:30%;font-family:HurmeGeometric3-Bold,sans-serif;font-weight:700;font-size:40px;color:#fff}#es-rc-content.es-rc .es-art__steps-item-title--2{top:25%;left:35%}#es-rc-content.es-rc .es-art__steps-item-title--3{top:35%;left:40%}#es-rc-content.es-rc .es-art__steps-item-description{font-family:HurmeGeometric3-Regular,sans-serif;font-size:inherit;text-align:center;max-width:70%;margin:0 auto}#es-rc-content.es-rc .es-art__steps-item-image{display:block;margin:0 auto 30px;max-width:350px}#es-rc-content.es-rc .es-art__steps-item-image--1,#es-rc-content.es-rc .es-art__steps-item-image--3{max-width:300px}#es-rc-content.es-rc .es-coctails{padding-top:30px;padding-bottom:45px;background-color:#f0ebe7}#es-rc-content.es-rc .es-coctails__left-logo{display:block;margin:0 auto;max-width:50%}#es-rc-content.es-rc .es-coctails__right-title{font-family:HurmeGeometric3-Bold,sans-serif;font-weight:700;font-size:28px;color:#000;text-align:center}#es-rc-content.es-rc .es-coctails__description{padding-left:10px;padding-right:10px;margin-bottom:30px;font-family:HurmeGeometric3-Regular,sans-serif;color:#000}#es-rc-content.es-rc .es-coctails__description span{font-weight:700}#es-rc-content.es-rc .es-coctails__tastes{display:flex;flex-direction:column;align-items:center;gap:30px;padding-top:30px}#es-rc-content.es-rc .es-coctails__tastes-single{max-width:300px}#es-rc-content.es-rc .es-coctails__tastes-single-full-width{margin-top:60px;max-width:100%}#es-rc-content.es-rc .es-coctails__tastes-title{margin-bottom:0;font-family:HurmeGeometric3-Bold,sans-serif;color:#8e7845;text-align:center}#es-rc-content.es-rc .es-coctails__tastes-single-title{margin-bottom:0;font-family:HurmeGeometric3-Bold,sans-serif;font-weight:700;color:#000;text-align:center}#es-rc-content.es-rc .es-coctails__tastes-single-description{font-family:HurmeGeometric3-Regular,sans-serif;color:#000;text-align:center;max-width:200px;margin:0 auto}#es-rc-content.es-rc .es-cross__container{background-color:#13294b;padding:16px}#es-rc-content.es-rc .es-cross__text,#es-rc-content.es-rc .es-cross__title{padding:0;line-height:inherit;color:#d9d8d6;font-family:HurmeGeometric3-Bold,sans-serif;text-align:center}#es-rc-content.es-rc .es-cross__title{margin:0 0 16px;font-size:28px}#es-rc-content.es-rc .es-cross__img--logo{width:200px}#es-rc-content.es-rc .es-cross__text{margin:0 0 22px;font-size:42px}@media screen and (min-width:768px){#es-rc-content.es-rc .es-eco__title,#es-rc-content.es-rc .es-kv__subtitle,#es-rc-content.es-rc .es-kv__title{font-size:40px}#es-rc-content.es-rc .es-kv__footer{max-width:68%;margin:0 auto}#es-rc-content.es-rc .es-natural{background-image:url(./static/img/es-natural-bg.png);background-size:cover;background-repeat:no-repeat;background-position-y:-100px}#es-rc-content.es-rc .es-natural__container{padding-bottom:75px;background-color:unset}#es-rc-content.es-rc .es-natural__description{max-width:50%;font-size:21px}#es-rc-content.es-rc .es-natural__list{width:50%;margin:60px 0;padding-left:0;background-color:unset;font-size:21px}}@media screen and (min-width:800px){#es-rc-content.es-rc .es-kv__container{background:url(./static/img/kv-bg.png) center center/cover no-repeat}#es-rc-content.es-rc .es-kv__footer-container{background:url(./static/img/kv-footer-bg.png) center center/cover no-repeat;min-height:400px;padding-top:100px}#es-rc-content.es-rc .es-natural{background-position-y:-30px}#es-rc-content.es-rc .es-eco{position:relative}#es-rc-content.es-rc .es-eco__title{position:absolute;top:-20px;left:0;padding:40px;max-width:55%;text-align:left;font-size:50px;z-index:1}#es-rc-content.es-rc .es-eco__title--blue{position:static;max-width:100%;text-align:center}#es-rc-content.es-rc .es-eco__subtitle{position:relative;padding-left:50px;font-size:40px;max-width:42%;text-align:left;z-index:1}#es-rc-content.es-rc .es-eco__container{padding-left:50px;padding-bottom:50px}#es-rc-content.es-rc .es-eco__container--second{position:relative}#es-rc-content.es-rc .es-eco__img--eco{position:absolute;top:-60px;right:0;max-width:65%}#es-rc-content.es-rc .es-eco__description{position:relative;max-width:60%;padding-top:30px;padding-bottom:50px;margin-left:-50px;padding-left:100px;margin-bottom:0;background-color:#13294b;z-index:3}#es-rc-content.es-rc .es-eco__picture-container{position:relative;margin-right:0}#es-rc-content.es-rc .es-eco__text{position:absolute;bottom:0;left:5%;text-align:left;max-width:75%;font-size:21px}#es-rc-content.es-rc .es-eco__text--second{padding-top:0;position:static;text-align:center;max-width:62%;margin:0 auto}#es-rc-content.es-rc .es-eco__img--big{margin-right:0}#es-rc-content.es-rc .es-eco__single-text{font-size:20px;min-height:224px}#es-rc-content.es-rc .es-eco__number{min-height:80px}#es-rc-content.es-rc .es-eco__content{flex-direction:row}#es-rc-content.es-rc .es-natural__subtitle{max-width:70%;text-align:left;font-size:50px}#es-rc-content.es-rc .es-art{background:url(./static/img/art-bg.png) center center/cover no-repeat;position:relative;z-index:2}#es-rc-content.es-rc .es-art__container{background-color:unset;margin-top:-110px;padding-top:120px}#es-rc-content.es-rc .es-art__steps{flex-direction:row;justify-content:space-around;background-color:unset}#es-rc-content.es-rc .es-art__steps--mobile,#es-rc-content.es-rc .es-kv__img--mobile{display:none}#es-rc-content.es-rc .es-art__steps--desktop{display:block;position:relative}#es-rc-content.es-rc .es-art__steps-item{max-width:33%}#es-rc-content.es-rc .es-art__steps-text-container{display:flex;align-items:center}#es-rc-content.es-rc .es-art__steps-item-image{max-width:200px;max-height:170px}#es-rc-content.es-rc .es-art__steps-item-image--2{margin-bottom:50px;max-width:250px}#es-rc-content.es-rc .es-art__steps-item-image--desktop{max-width:100%;display:block;margin:0 auto 30px;max-height:none}#es-rc-content.es-rc .es-art__steps-item-line{display:block;position:absolute;top:0;left:0}#es-rc-content.es-rc .es-art__steps-item-line--1{top:59%;left:25%}#es-rc-content.es-rc .es-art__steps-item-line--2{top:77%;left:58%}#es-rc-content.es-rc .es-art__steps-item-title{font-size:30px}#es-rc-content.es-rc .es-art__steps-item-description--desktop{max-width:28%;text-align:left;font-size:24px}#es-rc-content.es-rc .es-art__steps-item-description--desktop-2{margin-top:-200px}#es-rc-content.es-rc .es-art__steps-item-description--desktop-1{margin-top:-50px}#es-rc-content.es-rc .es-art__text{max-width:80%;margin:0 auto}#es-rc-content.es-rc .es-coctails__container{display:flex;gap:10px;justify-content:space-between}#es-rc-content.es-rc .es-coctails__right-title{margin-right:15%;font-size:35px}#es-rc-content.es-rc .es-coctails__description{margin-top:-100px;margin-left:50px;max-width:54%}#es-rc-content.es-rc .es-coctails__tastes{flex-direction:row;justify-content:center;align-items:flex-start;padding-top:10px}#es-rc-content.es-rc .es-taste__subtitle{font-size:40px}#es-rc-content.es-rc .es-taste__text{max-width:85%;margin:0 auto}#es-rc-content.es-rc .es-kv__img--desktop{display:block;position:absolute;top:30px;right:-30px;width:350px}#es-rc-content.es-rc .es-kv__container{position:relative;min-height:650px}#es-rc-content.es-rc .es-kv__content{max-width:647px;margin-left:16px}#es-rc-content.es-rc .es-kv__title{text-align:left;margin-top:100px}#es-rc-content.es-rc .es-kv__subtitle{font-size:50px;letter-spacing:-2px}#es-rc-content.es-rc .es-kv__text{padding:40px 0 0;text-align:left;font-size:20px;max-width:73%}#es-rc-content.es-rc .es-kv__footer{max-width:65%;font-size:21px}#es-rc-content.es-rc .es-kv__img--logo{margin-left:0}#es-rc-content.es-rc .es-kv__logo{padding:0}#es-rc-content.es-rc .es-natural__single{padding-inline:16px;max-width:220px}#es-rc-content.es-rc .es-natural__content{align-items:flex-start;flex-flow:row;gap:32px}}@media screen and (min-width:998px){#es-rc-content.es-rc .es-kv__content{padding-top:62px;padding-left:77px}#es-rc-content.es-rc .es-kv__text{max-width:100%;padding:24px 0 0;text-align:left;font-size:24px}#es-rc-content.es-rc .es-kv__title{margin-top:169px;font-size:72px}#es-rc-content.es-rc .es-kv__container{min-height:798px}#es-rc-content.es-rc .es-kv__img--desktop{top:78px;right:-110px;width:450px}#es-rc-content.es-rc .es-kv__subtitle{margin-bottom:15px;font-size:54px}#es-rc-content.es-rc .es-kv__footer{max-width:91%;font-size:24px}#es-rc-content.es-rc .es-eco__text{max-width:72%;font-size:24px;left:10%;bottom:4%}#es-rc-content.es-rc .es-eco__text--second{max-width:55%}#es-rc-content.es-rc .es-eco__title{padding-left:100px;font-size:60px;padding-top:88px;padding-bottom:72px;top:-58px}#es-rc-content.es-rc .es-eco__title--blue{margin-bottom:65px;font-size:60px;padding:0}#es-rc-content.es-rc .es-coctails__tastes-single-title,#es-rc-content.es-rc .es-eco__number,#es-rc-content.es-rc .es-eco__single-text{font-size:24px}#es-rc-content.es-rc .es-eco__content{align-items:flex-start;justify-content:space-around}#es-rc-content.es-rc .es-natural{min-height:1100px;background-position-y:-15px}#es-rc-content.es-rc .es-natural__container{padding-left:120px}#es-rc-content.es-rc .es-natural__description{max-width:55%;font-size:24px}#es-rc-content.es-rc .es-natural__description--second{max-width:60%}#es-rc-content.es-rc .es-natural__subtitle{margin-bottom:40px;font-size:60px}#es-rc-content.es-rc .es-natural__list{width:50%;margin:60px 0;padding-left:0;font-size:23px}#es-rc-content.es-rc .es-eco__subtitle{padding-top:43px;padding-left:85px;font-size:60px}#es-rc-content.es-rc .es-eco__description{max-width:55%;font-size:24px;padding-left:110px;padding-top:50px}#es-rc-content.es-rc .es-eco__img--eco{top:-55px;right:0;max-width:75%}#es-rc-content.es-rc .es-art__subtitle,#es-rc-content.es-rc .es-taste__subtitle{font-size:60px}#es-rc-content.es-rc .es-art__text{max-width:82%;font-size:24px}#es-rc-content.es-rc .es-art__steps-item{width:33%}#es-rc-content.es-rc .es-art__steps-item-image{max-width:100%;max-height:none;margin-bottom:30px}#es-rc-content.es-rc .es-coctails__description{font-size:24px;margin-top:-150px;margin-left:74px;max-width:50%}#es-rc-content.es-rc .es-coctails__right-title{font-size:58px}#es-rc-content.es-rc .es-coctails__tastes-title{font-size:36px}#es-rc-content.es-rc .es-coctails__tastes-single-description{max-width:77%;font-size:24px}#es-rc-content.es-rc .es-coctails__tastes-single{max-width:380px}#es-rc-content.es-rc .es-taste__text{max-width:85%;font-size:24px}}@media screen and (min-width:1110px){#es-rc-content.es-rc .es-kv__img--desktop{right:0}}@keyframes es-pulse{0%{transform:scale(1);box-shadow:0 0 0 0 #13294b;border-radius:50%}66%{transform:scale(1.1);box-shadow:0 0 0 15px rgba(208,230,185,0);border-radius:50%}to{transform:scale(1);box-shadow:0 0 0 rgba(208,230,185,0);border-radius:50%}}
     </style>
-  </head>
-  <body>
-    <div class="es-rc" id="es-rc-content">
-      <div class="es-kv">
+</head>
+<body>
+<div class="es-rc" id="es-rc-content">
+    <div class="es-kv">
         <div class="es-kv__container">
-          <div class="es-kv__content">
-            <div class="es-kv__logo">
-              <img
-                class="es-kv__img es-kv__img--logo"
-                src="./static/img/logo.png"
-                loading="lazy"
-                alt="SODAstream"
-              />
-            </div>
-            <h2 class="es-kv__title">
-              Harmonia formy <br />i&nbsp;funkcjonalności
-            </h2>
+            <div class="es-kv__content">
+                <div class="es-kv__logo">
+                    <img
+                            class="es-kv__img es-kv__img--logo"
+                            src="./static/img/logo.png"
+                            loading="lazy"
+                            alt="SODAstream"
+                    />
+                </div>
+                <h2 class="es-kv__title">
+                    Harmonia formy <br/>i&nbsp;funkcjonalności
+                </h2>
 
-            <p class="es-kv__text">
-              Lubisz stylowe urządzenia, które spójnie łączą nowoczesny design,
-              komfort użytkowania i nowoczesną technologię? Poznaj nowy ekspres
-              do gazowania wody SodaStream Ensō – oto sztuka użytkowa w najlepszym wydaniu!
-            </p>
-          </div>
-          <div class="es-kv__packshot">
-            <img
-              class="es-kv__img es-kv__img--mobile"
-              src="./static/img/kv-packshot.png"
-              loading="lazy"
-              alt="Opakowanie"
-            />
-            <img
-              class="es-kv__img es-kv__img--desktop"
-              src="./static/img/kv.png"
-              loading="lazy"
-              alt="Opakowanie"
-            />
-          </div>
+                <p class="es-kv__text">
+                    Lubisz stylowe urządzenia, które spójnie łączą nowoczesny design,
+                    komfort użytkowania i nowoczesną technologię? Poznaj nowy ekspres
+                    do gazowania wody SodaStream Ensō – oto sztuka użytkowa w najlepszym wydaniu!
+                </p>
+            </div>
+            <div class="es-kv__packshot">
+                <img
+                        class="es-kv__img es-kv__img--mobile"
+                        src="./static/img/kv-packshot.png"
+                        loading="lazy"
+                        alt="Opakowanie"
+                />
+                <img
+                        class="es-kv__img es-kv__img--desktop"
+                        src="./static/img/kv.png"
+                        loading="lazy"
+                        alt="Opakowanie"
+                />
+            </div>
         </div>
         <div class="es-kv__footer-container">
-          <p class="es-kv__subtitle">Japoński design, w którym się zakochasz</p>
-          <div class="es-kv__footer">
-            Stylowy saturator SodaStream Ensō to dzieło uznanego
-            japońskiego projektanta Naoto Fukasawy. Za cel postawił
-            sobie stworzenie praktycznego urządzenia, które zachwyca
-            nowoczesnym designem i wyrafinowaną estetyką. To zupełnie nowy wymiar codzienności.
-          </div>
+            <p class="es-kv__subtitle">Japoński design, w którym się zakochasz</p>
+            <div class="es-kv__footer">
+                Stylowy saturator SodaStream Ensō to dzieło uznanego
+                japońskiego projektanta Naoto Fukasawy. Za cel postawił
+                sobie stworzenie praktycznego urządzenia, które zachwyca
+                nowoczesnym designem i wyrafinowaną estetyką. To zupełnie nowy wymiar codzienności.
+            </div>
         </div>
-      </div>
+    </div>
 
-      <div class="es-eco">
+    <div class="es-eco">
         <div class="es-eco__container">
-          <h3 class="es-eco__title">Elegancki dodatek do Twojego wnętrza
-          </h3>
+            <h3 class="es-eco__title">Elegancki dodatek do Twojego wnętrza
+            </h3>
 
-          <div class="es-eco__picture-container">
-            <img
-              class="es-eco__img es-eco__img--big"
-              src="./static/img/picture-1.png"
-              loading="lazy"
-              alt="Sodastream Enso"
-            />
-            <p class="es-eco__text">
-              Minimalistyczna forma, wysokiej jakości materiały, dopracowane detale...
-              To wszystko powoduje, że saturator SodaStream Ensō stanie się centralnym
-              punktem Twojej kuchni. Dzięki przemyślanemu wzornictwu doskonale pasuje
-              zarówno do loftowych i minimalistycznych wnętrz, jak i ciepłych, przytulnych aranżacji.
+            <div class="es-eco__picture-container">
+                <img
+                        class="es-eco__img es-eco__img--big"
+                        src="./static/img/picture-1.png"
+                        loading="lazy"
+                        alt="Sodastream Enso"
+                />
+                <p class="es-eco__text">
+                    Minimalistyczna forma, wysokiej jakości materiały, dopracowane detale...
+                    To wszystko powoduje, że saturator SodaStream Ensō stanie się centralnym
+                    punktem Twojej kuchni. Dzięki przemyślanemu wzornictwu doskonale pasuje
+                    zarówno do loftowych i minimalistycznych wnętrz, jak i ciepłych, przytulnych aranżacji.
+                </p>
+            </div>
+        </div>
+    </div>
+
+    <div class="es-eco">
+        <div class="es-eco__container">
+            <h3 class="es-eco__title es-eco__title--blue">
+                Funkcjonalność w wersji premium
+            </h3>
+            <p class="es-eco__text es-eco__text--second">
+                Poznaj saturator SodaStream Ensō i zakochaj się w połączeniu eleganckiego stylu
+                z nowoczesną technologią i wysoką funkcjonalnością. Wygodnie gazuj wodę i delektuj się
+                ulubionymi napojami zawsze wtedy, gdy masz ochotę na pyszne bąbelki.
             </p>
-          </div>
+
+            <div class="es-eco__content">
+                <div class="es-eco__single">
+                    <p class="es-eco__number">
+                        Błyskawiczny montaż butelki Bottle
+                        Snap & Lock
+                    </p>
+                    <img
+                            class="es-eco__img"
+                            src="./static/img/icon-1.png"
+                            loading="lazy"
+                            alt="icon"
+                    />
+                    <p class="es-eco__single-text">
+                        Szybkie i&nbsp;intuicyjne<br/>
+                        mocowanie butelki <br/>umożliwia łatwe <br/>zabezpieczenie
+                        oraz <br/>wyjęcie jednym ruchem.
+                    </p>
+                </div>
+                <div class="es-eco__single">
+                    <p class="es-eco__number">
+                        Prosta instalacja cylindra CO₂ Quick Connect
+                    </p>
+                    <img
+                            class="es-eco__img"
+                            src="./static/img/icon-2.png"
+                            loading="lazy"
+                            alt="icon"
+                    />
+                    <p class="es-eco__single-text">
+                        Dzięki innowacyjnej technologii instalacji cylindra CO₂,
+                        szybko i sprawnie przygotujesz saturator do pracy.
+                        Bez potrzeby wkręcania cylindra.
+                    </p>
+                </div>
+                <div class="es-eco__single">
+                    <p class="es-eco__number">
+                        Obudowa wykonana ze stali nierdzewnej
+                    </p>
+                    <img
+                            class="es-eco__img"
+                            src="./static/img/icon-3.png"
+                            loading="lazy"
+                            alt="icon"
+                    />
+                    <p class="es-eco__single-text">
+                        Stal nierdzewna o eleganckim wykończeniu gwarantuje trwałość
+                        i łatwość czyszczenia, zapewniając długą żywotność saturatora.
+                    </p>
+                </div>
+            </div>
         </div>
-      </div>
+    </div>
 
-      <div class="es-eco">
-        <div class="es-eco__container">
-          <h3 class="es-eco__title es-eco__title--blue">
-            Funkcjonalność w wersji premium
-          </h3>
-          <p class="es-eco__text es-eco__text--second">
-            Poznaj saturator SodaStream Ensō i zakochaj się w połączeniu eleganckiego stylu
-            z nowoczesną technologią i wysoką funkcjonalnością. Wygodnie gazuj wodę i delektuj się
-            ulubionymi napojami zawsze wtedy, gdy masz ochotę na pyszne bąbelki.
-          </p>
-
-          <div class="es-eco__content">
-            <div class="es-eco__single">
-              <p class="es-eco__number">
-                Błyskawiczny montaż butelki Bottle
-                Snap & Lock
-              </p>
-              <img
-                class="es-eco__img"
-                src="./static/img/icon-1.png"
-                loading="lazy"
-                alt="icon"
-              />
-              <p class="es-eco__single-text">
-                Szybkie i&nbsp;intuicyjne<br />
-                mocowanie butelki <br />umożliwia łatwe <br />zabezpieczenie
-                oraz <br />wyjęcie jednym ruchem.
-              </p>
-            </div>
-            <div class="es-eco__single">
-              <p class="es-eco__number">
-                Prosta instalacja cylindra CO₂ Quick Connect
-              </p>
-              <img
-                class="es-eco__img"
-                src="./static/img/icon-2.png"
-                loading="lazy"
-                alt="icon"
-              />
-              <p class="es-eco__single-text">
-                Dzięki innowacyjnej technologii instalacji cylindra CO₂,
-                szybko i sprawnie przygotujesz saturator do pracy.
-                Bez potrzeby wkręcania cylindra.
-              </p>
-            </div>
-            <div class="es-eco__single">
-              <p class="es-eco__number">
-                Obudowa wykonana ze stali nierdzewnej
-              </p>
-              <img
-                class="es-eco__img"
-                src="./static/img/icon-3.png"
-                loading="lazy"
-                alt="icon"
-              />
-              <p class="es-eco__single-text">
-                Stal nierdzewna o eleganckim wykończeniu gwarantuje trwałość
-                i łatwość czyszczenia, zapewniając długą żywotność saturatora.
-              </p>
-            </div>
-          </div>
-        </div>
-      </div>
-
-      <div class="es-natural">
+    <div class="es-natural">
         <div class="es-natural__container">
-          <p class="es-natural__subtitle">
-            Stylowa butelka Ensō – komfort w eleganckiej odsłonie
-          </p>
+            <p class="es-natural__subtitle">
+                Stylowa butelka Ensō – komfort w eleganckiej odsłonie
+            </p>
 
-          <p class="es-natural__description">
-            W designerskim zestawie SodaStream Ensō znajduje się stylowa butelka,
-            która zachwyca estetyką. Eleganckie wzornictwo butelki doskonale podkreśla
-            styl saturatora. Została wyprodukowana z Tritanu, trwałego i odpornego
-            na matowienie materiału, który został ozdobiony detalami ze stali nierdzewnej.
-            <br></br>
-            <span class="es-natural__subtitle--bold">
+            <p class="es-natural__description">
+                W designerskim zestawie SodaStream Ensō znajduje się stylowa butelka,
+                która zachwyca estetyką. Eleganckie wzornictwo butelki doskonale podkreśla
+                styl saturatora. Została wyprodukowana z Tritanu, trwałego i odpornego
+                na matowienie materiału, który został ozdobiony detalami ze stali nierdzewnej.
+                <br></br>
+                <span class="es-natural__subtitle--bold">
               Butelka do saturatora Ensō to...
             </span>
-          </p>
-          <ul class="es-natural__list">
-            <li class="es-natural__item">
-              <b>Wygoda:</b> optymalna pojemność 1 l, idealna do codziennego użytkowania.
-            </li>
-            <li class="es-natural__item">
-              <b>Kompatybilność:</b> może być stosowana z modelami Ensō, Art i Terra.
-            </li>
-            <li class="es-natural__item">
-              <b>Elegancki wygląd:</b> wyróżnia się połyskującym wykończeniem ze stali nierdzewnej.
-            </li>
-            <li class="es-natural__item">
-              <b>Bezpieczeństwo:</b> jest wykonana z materiałów wolnych od BPA.
-            <li class="es-natural__item">
-              <b>Trwałość:</b> jest odporna na uszkodzenia i matowienie.
-            </li>
-            <li class="es-natural__item">
-              <b>Higiena:</b> jest dostosowana do mycia w zmywarce, ma odłączaną podstawkę,
-              która pozwala na zachowanie maksymalnej czystości.
-            </li>
-          </ul>
-          <p class="es-natural__description es-natural__description--second">
+            </p>
+            <ul class="es-natural__list">
+                <li class="es-natural__item">
+                    <b>Wygoda:</b> optymalna pojemność 1 l, idealna do codziennego użytkowania.
+                </li>
+                <li class="es-natural__item">
+                    <b>Kompatybilność:</b> może być stosowana z modelami Ensō, Art i Terra.
+                </li>
+                <li class="es-natural__item">
+                    <b>Elegancki wygląd:</b> wyróżnia się połyskującym wykończeniem ze stali nierdzewnej.
+                </li>
+                <li class="es-natural__item">
+                    <b>Bezpieczeństwo:</b> jest wykonana z materiałów wolnych od BPA.
+                <li class="es-natural__item">
+                    <b>Trwałość:</b> jest odporna na uszkodzenia i matowienie.
+                </li>
+                <li class="es-natural__item">
+                    <b>Higiena:</b> jest dostosowana do mycia w zmywarce, ma odłączaną podstawkę,
+                    która pozwala na zachowanie maksymalnej czystości.
+                </li>
+            </ul>
+            <p class="es-natural__description es-natural__description--second">
             <span class="es-natural__subtitle--bold">
               Praktyczna i trwała butelka do gazowania wody
             </span>
 
-            Ustaw elegancką butelkę Ensō na kuchennym blacie, stole
-            w salonie lub zabierz ze sobą, a później po prostu włóż do zmywarki.
-            Przemyślany design i wysokiej jakości materiały zapewniają pełną dowolność
-            użytkowania oraz łatwe utrzymanie czytości. Nawet przy intensywnym użytkowaniu,
-            butelka zachowa swoją funkcjonalność i wygląd na długi czas.
-          </p>
-          <div class="es-natural__picture"></div>
+                Ustaw elegancką butelkę Ensō na kuchennym blacie, stole
+                w salonie lub zabierz ze sobą, a później po prostu włóż do zmywarki.
+                Przemyślany design i wysokiej jakości materiały zapewniają pełną dowolność
+                użytkowania oraz łatwe utrzymanie czytości. Nawet przy intensywnym użytkowaniu,
+                butelka zachowa swoją funkcjonalność i wygląd na długi czas.
+            </p>
+            <div class="es-natural__picture"></div>
         </div>
-      </div>
+    </div>
 
-      <div class="es-eco">
+    <div class="es-eco">
         <div class="es-eco__container es-eco__container--second">
-          <p class="es-eco__subtitle">Twój krok w kierunku Eko nawyków</p>
+            <p class="es-eco__subtitle">Twój krok w kierunku Eko nawyków</p>
 
-          <p class="es-eco__description">
-            Szukasz eko rozwiązań, które nie przyprawią Cię o zawrót głowy?
-            Gazuj wodę w domu w jeszcze lepszym stylu i bez zbędnego wysiłku.
-            <br /><br />
-            <b>Mała-wielka zmiana dla planety i komfortu</b>
-            Postaw na designerski ekspres do gazowania wody SodaStream Ensō, który pomoże Ci zadbać o komfort i wdrożyć eko nawyki.
-            <br /><br />
-            <b>Dlaczego warto?</b>
-            Zamiast kupować, transportować
-            i przechowywać zgrzewki wody, masz natychmiastowy dostęp do świeżych bąbelków. W ten sposób oszczędzasz mnóstwo czasu, miejsca i energii. Żyj wygodnie, a jednocześnie troszcz się o środowisko.
-          </p>
+            <p class="es-eco__description">
+                Szukasz eko rozwiązań, które nie przyprawią Cię o zawrót głowy?
+                Gazuj wodę w domu w jeszcze lepszym stylu i bez zbędnego wysiłku.
+                <br/><br/>
+                <b>Mała-wielka zmiana dla planety i komfortu</b>
+                Postaw na designerski ekspres do gazowania wody SodaStream Ensō, który pomoże Ci zadbać o komfort i
+                wdrożyć eko nawyki.
+                <br/><br/>
+                <b>Dlaczego warto?</b>
+                Zamiast kupować, transportować
+                i przechowywać zgrzewki wody, masz natychmiastowy dostęp do świeżych bąbelków. W ten sposób oszczędzasz
+                mnóstwo czasu, miejsca i energii. Żyj wygodnie, a jednocześnie troszcz się o środowisko.
+            </p>
 
-          <img
-            class="es-eco__img es-eco__img--eco"
-            src="./static/img/eco-image.png"
-            loading="lazy"
-            alt="Eco image"
-          />
+            <img
+                    class="es-eco__img es-eco__img--eco"
+                    src="./static/img/eco-image.png"
+                    loading="lazy"
+                    alt="Eco image"
+            />
         </div>
-      </div>
+    </div>
 
-      <div class="es-art">
+    <div class="es-art">
         <div class="es-art__container">
-          <p class="es-art__subtitle">
-            Wyraź siebie smakiem z SodaStream Ensō
-          </p>
-          <p class="es-art__text">
-            Na co masz dziś ochotę: klasyczną wodę gazowaną,
-            napój o owocowym smaku, a może szalony miks z dodatkami?
-            Ekspres do gazowania wody SodaStream Ensō to Twój klucz
-            do świata smakowych eksperymentów! Dopasuj z nim poziom
-            intensywności bąbelków i natężenie smaku, by stworzyć perfekcyjny napój.
-          </p>
+            <p class="es-art__subtitle">
+                Wyraź siebie smakiem z SodaStream Ensō
+            </p>
+            <p class="es-art__text">
+                Na co masz dziś ochotę: klasyczną wodę gazowaną,
+                napój o owocowym smaku, a może szalony miks z dodatkami?
+                Ekspres do gazowania wody SodaStream Ensō to Twój klucz
+                do świata smakowych eksperymentów! Dopasuj z nim poziom
+                intensywności bąbelków i natężenie smaku, by stworzyć perfekcyjny napój.
+            </p>
         </div>
         <div class="es-art__steps es-art__steps--mobile">
-          <div class="es-art__steps-item">
-            <p class="es-art__steps-item-title es-art__steps-item-title--1">
-              gazuj
-            </p>
-            <img
-              class="es-art__steps-item-image es-art__steps-item-image--1"
-              src="./static/img/step-1.png"
-              loading="lazy"
-              alt="Gazuj"
-            />
-            <p class="es-art__steps-item-description">
-              Napełnij butelkę SodaStream zimną wodą z kranu i&nbsp;nagazuj tak,
-              jak lubisz.
-            </p>
-          </div>
-          <div class="es-art__steps-item">
-            <p class="es-art__steps-item-title es-art__steps-item-title--2">
-              miksuj
-            </p>
-            <img
-              class="es-art__steps-item-image es-art__steps-item-image--2"
-              src="./static/img/step-2.png"
-              loading="lazy"
-              alt="Miksuj"
-            />
-            <p class="es-art__steps-item-description">
-              Połącz bąbelki<br />
-              z syropem, delikatnie wymieszaj i&nbsp;przelej do szklanki
-            </p>
-          </div>
-          <div class="es-art__steps-item">
-            <p class="es-art__steps-item-title es-art__steps-item-title--3">
-              smakuj
-            </p>
-            <img
-              class="es-art__steps-item-image es-art__steps-item-image--3"
-              src="./static/img/step-3.png"
-              loading="lazy"
-              alt="Smakuj"
-            />
-            <p class="es-art__steps-item-description">
-              Napój gotowy – teraz czas na chwilę przyjemności
-            </p>
-          </div>
+            <div class="es-art__steps-item">
+                <p class="es-art__steps-item-title es-art__steps-item-title--1">
+                    gazuj
+                </p>
+                <img
+                        class="es-art__steps-item-image es-art__steps-item-image--1"
+                        src="./static/img/step-1.png"
+                        loading="lazy"
+                        alt="Gazuj"
+                />
+                <p class="es-art__steps-item-description">
+                    Napełnij butelkę SodaStream zimną wodą z kranu i&nbsp;nagazuj tak,
+                    jak lubisz.
+                </p>
+            </div>
+            <div class="es-art__steps-item">
+                <p class="es-art__steps-item-title es-art__steps-item-title--2">
+                    miksuj
+                </p>
+                <img
+                        class="es-art__steps-item-image es-art__steps-item-image--2"
+                        src="./static/img/step-2.png"
+                        loading="lazy"
+                        alt="Miksuj"
+                />
+                <p class="es-art__steps-item-description">
+                    Połącz bąbelki<br/>
+                    z syropem, delikatnie wymieszaj i&nbsp;przelej do szklanki
+                </p>
+            </div>
+            <div class="es-art__steps-item">
+                <p class="es-art__steps-item-title es-art__steps-item-title--3">
+                    smakuj
+                </p>
+                <img
+                        class="es-art__steps-item-image es-art__steps-item-image--3"
+                        src="./static/img/step-3.png"
+                        loading="lazy"
+                        alt="Smakuj"
+                />
+                <p class="es-art__steps-item-description">
+                    Napój gotowy – teraz czas na chwilę przyjemności
+                </p>
+            </div>
         </div>
         <div class="es-art__steps es-art__steps--desktop">
-          <img
-            class="es-art__steps-item-image es-art__steps-item-image--desktop"
-            src="./static/img/gas-desktop.png"
-            loading="lazy"
-            alt="Gazuj"
-          />
-
-          <div class="es-art__steps-text-container">
-            <p
-              class="es-art__steps-item-description es-art__steps-item-description--desktop es-art__steps-item-description--desktop-1"
-            >
-              Wlej zimną wodę z kranu do butelki SodaStream Ensō i
-              zabąbelkuj – dobierz poziom nagazowania do swoich preferencji.
-            </p>
             <img
-              class="es-art__steps-item-line es-art__steps-item-line--1"
-              src="./static/img/line-1.png"
-              loading="lazy"
-              alt="Linia"
+                    class="es-art__steps-item-image es-art__steps-item-image--desktop"
+                    src="./static/img/gas-desktop.png"
+                    loading="lazy"
+                    alt="Gazuj"
             />
 
-            <p
-              class="es-art__steps-item-description es-art__steps-item-description--desktop es-art__steps-item-description--desktop-2"
-            >
-              Połącz wodę gazowaną z ulubionym syropem
-              i opcjonalnie dodatkami, takimi jak owoce
-              czy przyprawy.
-            </p>
+            <div class="es-art__steps-text-container">
+                <p
+                        class="es-art__steps-item-description es-art__steps-item-description--desktop es-art__steps-item-description--desktop-1"
+                >
+                    Wlej zimną wodę z kranu do butelki SodaStream Ensō i
+                    zabąbelkuj – dobierz poziom nagazowania do swoich preferencji.
+                </p>
+                <img
+                        class="es-art__steps-item-line es-art__steps-item-line--1"
+                        src="./static/img/line-1.png"
+                        loading="lazy"
+                        alt="Linia"
+                />
 
-            <img
-              class="es-art__steps-item-line es-art__steps-item-line--2"
-              src="./static/img/line-2.png"
-              loading="lazy"
-              alt="Linia"
-            />
+                <p
+                        class="es-art__steps-item-description es-art__steps-item-description--desktop es-art__steps-item-description--desktop-2"
+                >
+                    Połącz wodę gazowaną z ulubionym syropem
+                    i opcjonalnie dodatkami, takimi jak owoce
+                    czy przyprawy.
+                </p>
 
-            <p
-              class="es-art__steps-item-description es-art__steps-item-description--desktop es-art__steps-item-description--desktop-3"
-            >
-              Zakochaj się w orzeźwieniu, jakie zapewnia świeży napój gazowany.            </p>
-          </div>
+                <img
+                        class="es-art__steps-item-line es-art__steps-item-line--2"
+                        src="./static/img/line-2.png"
+                        loading="lazy"
+                        alt="Linia"
+                />
+
+                <p
+                        class="es-art__steps-item-description es-art__steps-item-description--desktop es-art__steps-item-description--desktop-3"
+                >
+                    Zakochaj się w orzeźwieniu, jakie zapewnia świeży napój gazowany. </p>
+            </div>
         </div>
-      </div>
+    </div>
 
-      <div class="es-coctails">
+    <div class="es-coctails">
         <div class="es-coctails__container">
-          <div class="es-coctails__left">
-            <img
-              class="es-coctails__left-logo"
-              src="./static/img/sodastream-crafted-logo.png"
-              loading="lazy"
-              alt="Logotyp"
-            />
-            <img
-              class="es-coctails__image"
-              src="./static/img/coctail-1.png"
-              loading="lazy"
-              alt="Koktajl"
-            />
-          </div>
-          <div class="es-coctails__right">
-            <p class="es-coctails__right-title">
-              Perfekcyjne<br />
-              koktajle i&nbsp;moktajle<br />
-              na 1, 2, tssst!
-            </p>
-            <img
-              class="es-coctails__image"
-              src="./static/img/coctail-2.png"
-              loading="lazy"
-              alt="Koktajl"
-            />
-          </div>
+            <div class="es-coctails__left">
+                <img
+                        class="es-coctails__left-logo"
+                        src="./static/img/sodastream-crafted-logo.png"
+                        loading="lazy"
+                        alt="Logotyp"
+                />
+                <img
+                        class="es-coctails__image"
+                        src="./static/img/coctail-1.png"
+                        loading="lazy"
+                        alt="Koktajl"
+                />
+            </div>
+            <div class="es-coctails__right">
+                <p class="es-coctails__right-title">
+                    Perfekcyjne<br/>
+                    koktajle i&nbsp;moktajle<br/>
+                    na 1, 2, tssst!
+                </p>
+                <img
+                        class="es-coctails__image"
+                        src="./static/img/coctail-2.png"
+                        loading="lazy"
+                        alt="Koktajl"
+                />
+            </div>
         </div>
         <p class="es-coctails__description">
-          A gdyby tak... naprawdę zaszaleć? To możliwe z linią SodaStream Crafted,
-          w której znajdziesz bezalkoholowe bazy do koktajli i moktajli.
-          Niebanalne połączenia smakowe skomponowano tak,
-          by z każdym łykiem pobudzać zmysły i cieszyć się pełnią doznań.
+            A gdyby tak... naprawdę zaszaleć? To możliwe z linią SodaStream Crafted,
+            w której znajdziesz bezalkoholowe bazy do koktajli i moktajli.
+            Niebanalne połączenia smakowe skomponowano tak,
+            by z każdym łykiem pobudzać zmysły i cieszyć się pełnią doznań.
         </p>
         <h2 class="es-coctails__tastes-title">
-          Wybierz syrop SodaStream Crafted pasujący do Ciebie...
+            Wybierz syrop SodaStream Crafted pasujący do Ciebie...
         </h2>
         <div class="es-coctails__tastes">
-          <div class="es-coctails__tastes-single">
-            <p class="es-coctails__tastes-single-title">
-              Ananas & Jalapeño:
-            </p>
-            <p class="es-coctails__tastes-single-description">
-              Unikalne połączenie smaków tropikalnego ananasa i
-              ognistego jalapeño, które rozpali wszystkie zmysły
-            </p>
-          </div>
-          <div class="es-coctails__tastes-single">
-            <p class="es-coctails__tastes-single-title">
-              Grejpfrut & Czarny Bez:
-            </p>
-            <p class="es-coctails__tastes-single-description">
-              Wyrafinowana kompozycja smaków soczystego grejpfruta i
-              romantycznych kwiatów czarnego bzu oczaruje Twoich gości
-            </p>
-          </div>
-          <div class="es-coctails__tastes-single">
-            <p class="es-coctails__tastes-single-title">
-              Brzoskwinia & Imbir:
-            </p>
-            <p class="es-coctails__tastes-single-description">
-              Owocny mariaż smaków słodkiej brzoskwini z pikantnym imbirem
-              zachwyca balansem i przyjemnie orzeźwia
-            </p>
-          </div>
+            <div class="es-coctails__tastes-single">
+                <p class="es-coctails__tastes-single-title">
+                    Ananas & Jalapeño:
+                </p>
+                <p class="es-coctails__tastes-single-description">
+                    Unikalne połączenie smaków tropikalnego ananasa i
+                    ognistego jalapeño, które rozpali wszystkie zmysły
+                </p>
+            </div>
+            <div class="es-coctails__tastes-single">
+                <p class="es-coctails__tastes-single-title">
+                    Grejpfrut & Czarny Bez:
+                </p>
+                <p class="es-coctails__tastes-single-description">
+                    Wyrafinowana kompozycja smaków soczystego grejpfruta i
+                    romantycznych kwiatów czarnego bzu oczaruje Twoich gości
+                </p>
+            </div>
+            <div class="es-coctails__tastes-single">
+                <p class="es-coctails__tastes-single-title">
+                    Brzoskwinia & Imbir:
+                </p>
+                <p class="es-coctails__tastes-single-description">
+                    Owocny mariaż smaków słodkiej brzoskwini z pikantnym imbirem
+                    zachwyca balansem i przyjemnie orzeźwia
+                </p>
+            </div>
         </div>
         <div class="es-coctails__tastes-single-full-width">
-          <p class="es-coctails__tastes-single-title">
-            Koktajle i moktajle, z którymi podkreślisz smak życia
-          </p><br></br>
-          <p class="es-coctails__tastes-single-description">
-            Z SodaStream Crafted puścisz wodze fantazji! Dodaj do wody gazowanej syrop oraz ulubione dodatki,
-            eksperymentuj i twórz własne kompozycje. Niech staną się nieodłącznym elementem zarówno na co dzień, jak i podczas imprez.
-          </p>
+            <p class="es-coctails__tastes-single-title">
+                Koktajle i moktajle, z którymi podkreślisz smak życia
+            </p><br></br>
+            <p class="es-coctails__tastes-single-description">
+                Z SodaStream Crafted puścisz wodze fantazji! Dodaj do wody gazowanej syrop oraz ulubione dodatki,
+                eksperymentuj i twórz własne kompozycje. Niech staną się nieodłącznym elementem zarówno na co dzień, jak
+                i podczas imprez.
+            </p>
         </div>
-      </div>
+    </div>
 
-      <div class="es-taste">
+    <div class="es-taste">
         <img
-          class="es-taste__day-night"
-          src="./static/img/day-night-sodastream.png"
-          loading="lazy"
-          alt="Sodastream"
+                class="es-taste__day-night"
+                src="./static/img/day-night-sodastream.png"
+                loading="lazy"
+                alt="Sodastream"
         />
         <div class="es-taste__container">
-          <h3 class="es-taste__subtitle">
-            Jedna SodaStream – wiele&nbsp;możliwości
-          </h3>
+            <h3 class="es-taste__subtitle">
+                Jedna SodaStream – wiele&nbsp;możliwości
+            </h3>
 
-          <img
-            class="es-taste__img"
-            src="./static/img/syrups.png"
-            loading="lazy"
-            alt="syrups"
-          />
-          <p class="es-taste__text">
-            Przemień zwykłą wodę w bąbelkowe arcydzieło smaku! Wybieraj spośród klasycznych propozycji,
-            takich jak Pepsi i Mirinda, a także spróbój orzeźwiającą Lemoniadę lub owocowe warianty
-            bez dodatku cukru, w tym Marakuję, Owoce Leśne i Pomarańczę Mango. Pełna gama smaków czeka na Ciebie!
-          </p>
+            <img
+                    class="es-taste__img"
+                    src="./static/img/syrups.png"
+                    loading="lazy"
+                    alt="syrups"
+            />
+            <p class="es-taste__text">
+                Przemień zwykłą wodę w bąbelkowe arcydzieło smaku! Wybieraj spośród klasycznych propozycji,
+                takich jak Pepsi i Mirinda, a także spróbój orzeźwiającą Lemoniadę lub owocowe warianty
+                bez dodatku cukru, w tym Marakuję, Owoce Leśne i Pomarańczę Mango. Pełna gama smaków czeka na Ciebie!
+            </p>
 
-          <h2 class="es-taste__sub-subtitle">
-            Miksuj, eksperymentuj i smakuj bez granic!
-          </h2>
+            <h2 class="es-taste__sub-subtitle">
+                Miksuj, eksperymentuj i smakuj bez granic!
+            </h2>
         </div>
-      </div>
     </div>
-  </body>
+</div>
+</body>
 </html>
